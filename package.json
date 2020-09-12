@@ -5,14 +5,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && tsc",
+    "build": "yarn run clean && yarn tsc",
     "clean": "rimraf ./lib ./build",
-    "lint:fix": "yarn lint:package && yarn lint:ts --fix && prettier --write ./src",
+    "lint:fix": "yarn lint:package && yarn lint:ts --fix && prettier --write ./src && yarn typecheck",
     "lint:fix:md": "prettier --write *.md",
     "lint:package": "prettier-package-json --write ./package.json",
     "lint:ts": "eslint './src/**/*.ts'",
-    "test": "npm run build && jest --testTimeout 10000 --rootDir ./lib/test",
-    "watch": "npm run clean && tsc --watch"
+    "test": "yarn run build && jest --testTimeout 10000 --rootDir ./lib/test",
+    "typecheck": "yarn tsc --noEmit",
+    "watch": "yarn run clean && yarn tsc --watch"
   },
   "dependencies": {
     "zapier-platform-core": "10.1.1"

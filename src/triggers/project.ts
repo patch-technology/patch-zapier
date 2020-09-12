@@ -1,23 +1,25 @@
-import { ZObject } from "zapier-platform-core";
-import { PatchResponse } from "../types";
+import { Bundle, ZObject } from "zapier-platform-core";
+import { PatchResponse, ZapierTrigger } from "../types";
 
-const perform = async (z: ZObject): Promise<unknown> => {
+const perform = async (z: ZObject, bundle: Bundle): Promise<unknown> => {
+  // zapier starts with page 0
+  const page = bundle.meta.page + 1;
   const { data } = await z.request("https://api.usepatch.com/v1/projects", {
-    json: { page: 1 },
+    json: { page },
   });
   return (data as PatchResponse).data;
 };
 
-export const ProjectTrigger = {
+export const ProjectTrigger: ZapierTrigger = {
   key: "project",
   noun: "project",
-
   display: {
     label: "New Project",
     description: "Triggers when a new project is created.",
   },
-
   operation: {
+    type: "polling",
+    canPaginate: true,
     perform,
     sample: {
       id: "pro_test_2e049bbfe8c998ca82025d776f8289ff",

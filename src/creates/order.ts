@@ -1,5 +1,5 @@
 import { Bundle, ZObject } from "zapier-platform-core";
-import { PatchResponse } from "../types";
+import { ZapierCreate, PatchResponse } from "../types";
 
 type CreateData = {
   mass_g: number;
@@ -20,15 +20,13 @@ const perform = async (
   return (data as PatchResponse).data;
 };
 
-export const OrderCreate = {
+export const OrderCreate: ZapierCreate<CreateData> = {
   key: "order",
   noun: "order",
-
   display: {
     label: "Create Order",
     description: "Creates a new order.",
   },
-
   operation: {
     perform,
     inputFields: [
