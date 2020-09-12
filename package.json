@@ -1,0 +1,46 @@
+{
+  "private": true,
+  "name": "patch",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "yarn run clean && yarn tsc",
+    "clean": "rimraf ./lib ./build",
+    "lint:fix": "yarn lint:package && yarn lint:ts --fix && prettier --write ./src && yarn typecheck",
+    "lint:fix:md": "prettier --write *.md",
+    "lint:package": "prettier-package-json --write ./package.json",
+    "lint:ts": "eslint './src/**/*.ts'",
+    "test": "yarn run build && jest --testTimeout 10000 --rootDir ./lib/test",
+    "typecheck": "yarn tsc --noEmit",
+    "watch": "yarn run clean && yarn tsc --watch"
+  },
+  "dependencies": {
+    "zapier-platform-core": "10.1.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.13.5",
+    "@typescript-eslint/eslint-plugin": "^4.1.0",
+    "@typescript-eslint/parser": "^4.1.0",
+    "eslint": "^7.8.1",
+    "husky": "^4.3.0",
+    "jest": "^25.5.3",
+    "lint-staged": "^10.3.0",
+    "prettier": "^2.1.1",
+    "prettier-package-json": "^2.1.3",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.0.2",
+    "zapier-platform-cli": "^10.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "package.json": "yarn lint:package",
+    "*.md": "yarn lint:fix:md",
+    "*.{ts,tsx}": "yarn lint:fix"
+  }
+}
