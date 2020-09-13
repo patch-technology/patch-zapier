@@ -1,6 +1,6 @@
 import { Bundle, HttpRequestOptions, ZObject } from "zapier-platform-core";
 import { OrderTrigger, ProjectTrigger } from "./triggers";
-import { OrderCreate } from "./creates";
+import { CreateOrder, PlaceOrder, CancelOrder } from "./creates";
 import { version as platformVersion } from "zapier-platform-core";
 const { version } = require("../package.json"); // eslint-disable-line
 
@@ -38,6 +38,8 @@ export default {
   },
 
   creates: {
-    [OrderCreate.key]: OrderCreate,
+    [CreateOrder.key]: CreateOrder,
+    [PlaceOrder.key]: PlaceOrder,
+    [CancelOrder.key]: CancelOrder,
   },
 };

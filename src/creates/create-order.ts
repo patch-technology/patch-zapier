@@ -20,8 +20,8 @@ const perform = async (
   return (data as PatchResponse).data;
 };
 
-export const OrderCreate: ZapierCreate<CreateData> = {
-  key: "order",
+export const CreateOrder: ZapierCreate<CreateData> = {
+  key: "create-order",
   noun: "order",
   display: {
     label: "Create Order",
