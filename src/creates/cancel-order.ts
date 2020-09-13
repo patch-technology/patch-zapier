@@ -18,7 +18,7 @@ const perform = async (
 };
 
 export const CancelOrder: ZapierCreate<CancelData> = {
-  key: "Cancel-order",
+  key: "cancel-order",
   noun: "order",
   display: {
     label: "Cancel Order",
