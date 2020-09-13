@@ -14,10 +14,8 @@ The rest of the project dependencies can be installed by running `yarn install`.
 
 There are a number of helpful scripts in `package.json`.
 
-Run tests
-`yarn test`
-
 Run typescript in watch mode:
+
 `yarn watch`
 
 ## Docs
@@ -32,16 +30,19 @@ The zapier cli can be run via `yarn zapier`. Some helpful recipes:
 ### Validate
 
 Run Zapier validations:
+
 `yarn build && yarn zapier validate`
 
 ### Logs
 
-All HTTP requests
+All HTTP requests:
+
+`yarn zapier logs --type=http`
+
+Detailed log information:
+
 `yarn zapier logs --type=http --detailed`
 
-Details log information:
-`yarn zapier logs --type=http --detailed`
+## Deployment
 
-### Manual deployment
-
-`yarn build && yarn zapier push`
+Use the `publish` Github workflow action.
