@@ -1,6 +1,11 @@
 import { Bundle, HttpRequestOptions, ZObject } from "zapier-platform-core";
-import { OrderTrigger, ProjectTrigger } from "./triggers";
-import { CreateOrder, PlaceOrder, CancelOrder } from "./creates";
+import { EstimateTrigger, OrderTrigger, ProjectTrigger } from "./triggers";
+import {
+  CreateEstimate,
+  CreateOrder,
+  PlaceOrder,
+  CancelOrder,
+} from "./creates";
 import { version as platformVersion } from "zapier-platform-core";
 const { version } = require("../package.json"); // eslint-disable-line
 
@@ -33,13 +38,15 @@ export default {
   },
 
   triggers: {
-    [ProjectTrigger.key]: ProjectTrigger,
+    [EstimateTrigger.key]: EstimateTrigger,
     [OrderTrigger.key]: OrderTrigger,
+    [ProjectTrigger.key]: ProjectTrigger,
   },
 
   creates: {
+    [CancelOrder.key]: CancelOrder,
+    [CreateEstimate.key]: CreateEstimate,
     [CreateOrder.key]: CreateOrder,
     [PlaceOrder.key]: PlaceOrder,
-    [CancelOrder.key]: CancelOrder,
   },
 };
