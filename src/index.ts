@@ -10,6 +10,7 @@ const addApiKeyHeader = (
   bundle: Bundle
 ): HttpRequestOptions => {
   req.headers ??= {};
+  req.headers["Content-Type"] = "application/json";
   req.headers["Authorization"] = `Bearer ${bundle.authData.apiKey}`;
   return req;
 };

@@ -5,7 +5,7 @@ const perform = async (z: ZObject, bundle: Bundle): Promise<unknown> => {
   // zapier starts with page 0
   const page = bundle.meta.page + 1;
   const { data } = await z.request("https://api.usepatch.com/v1/projects", {
-    json: { page },
+    params: { page },
   });
   return (data as PatchResponse).data;
 };
