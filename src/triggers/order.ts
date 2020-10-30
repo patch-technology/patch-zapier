@@ -15,6 +15,7 @@ export const OrderTrigger: ZapierTrigger = {
   noun: "order",
   display: {
     label: "New Order",
+    important: true,
     description: "Triggers when a new order is created.",
   },
   operation: {
