@@ -25,6 +25,7 @@ export const CreateOrder: ZapierCreate<CreateData> = {
   noun: "order",
   display: {
     label: "Create Order",
+    important: true,
     description: "Creates a new order.",
   },
   operation: {

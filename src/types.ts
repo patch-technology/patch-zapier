@@ -9,6 +9,7 @@ type ZapierBase<BundleConfig> = {
   noun: string;
   display: {
     label: string;
+    important?: boolean;
     description: string;
   };
   operation: {

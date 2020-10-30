@@ -26,7 +26,15 @@ export default {
   beforeRequest: [addApiKeyHeader],
   authentication: {
     type: "custom",
-    fields: [{ key: "apiKey", type: "string" }],
+    fields: [
+      {
+        key: "apiKey",
+        type: "string",
+        helpText:
+          "Can be found on the [API Keys](https://dashboard.usepatch.com/api_keys) page of the Patch dashboard",
+      },
+    ],
+    connectionLabel: "Patch",
     test: async (z: ZObject): Promise<void> => {
       const response = await z.request("https://api.usepatch.com/v1/orders", {
         json: { page: 1 },
